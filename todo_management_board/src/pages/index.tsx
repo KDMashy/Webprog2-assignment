@@ -152,9 +152,11 @@ export default function Home() {
       <h1 className="text-2xl font-bold text-center mx-auto pt-3 pb-5 mb-10">
         Task Management Board
       </h1>
+      <div className="flex">
+        <NewTaskModal />
+        <EditTaskModal task={tasks[0]} tasks={tasks} setTasks={setTasks} />
+      </div>
       {!loading ? GenerateColumns() : <Loading />}
-      <NewTaskModal />
-      <EditTaskModal task={tasks[0]} tasks={tasks} setTasks={setTasks} />
     </main>
   );
 }
