@@ -20,8 +20,6 @@ export const NewTaskModal = ({
 }) => {
   const [open, setOpen] = useState(false);
 
-  const [taskId, setTaskId] = useState(0);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -43,12 +41,11 @@ export const NewTaskModal = ({
     if (!id) {
       localStorage.setItem("task_id", JSON.stringify(0));
     } else {
-      localStorage.setItem("task_id", JSON.stringify(JSON.parse(id) + 1));
-      setTaskId(JSON.parse(id));
+      localStorage.setItem("task_id", JSON.stringify(parseInt(id) + 1));
     }
 
     const newTask: Task = {
-      id: taskId,
+      id: parseInt(id) + 1,
       title: formData.title,
       description: formData.description,
       due_date: newDueDate,
