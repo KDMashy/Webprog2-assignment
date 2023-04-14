@@ -7,7 +7,6 @@ import { Task } from "@/types/TaskInterface";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  // const [tasks, setTasks] = useState<Task[]>([])
   const [tasks, setTasks] = useState<Task[]>([]);
 
   const [loading, setLoading] = useState(false);
