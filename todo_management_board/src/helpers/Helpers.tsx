@@ -14,7 +14,7 @@ export const getColCount = (cols) => {
   });
   switch (colCount) {
     case 1:
-      return "grid-cols-1";
+      return "sm:grid-cols-1";
     case 2:
       return "md:grid-cols-2";
     case 3:

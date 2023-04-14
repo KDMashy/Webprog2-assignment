@@ -8,8 +8,10 @@ function Footer() {
       <div className="flex items-center h-full px-5">
         {/* <Avatar width="w-[130px]" height="h-[130px]" circular route="/" /> */}
         <div className="flex flex-col ml-10 pt-2">
-          <span className={`h-[50px]`}>Links</span>
-          <span className={`h-[50px]`}>CopyRight</span>
+          {/* <span className={`h-[50px]`}>Links</span> */}
+          <span className={`h-[50px]`}>
+            CopyRight Dániel Balogh & Dominik Klepe
+          </span>
         </div>
       </div>
     </footer>
