@@ -101,7 +101,7 @@ export default function Home() {
       <div
         className={`grid ${getColCount(
           check
-        )} gap-4 sm:grid-cols-2 grid-cols-1 grid`}
+        )} gap-4 sm:grid-cols-2 grid-cols-1`}
       >
         {check?.todo && (
           <TaskColumn
