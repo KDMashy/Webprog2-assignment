@@ -39,7 +39,6 @@ export const MuiModal = () => {
       created_at: Date.now(),
     };
 
-    // console.log(formatDate(formData.due_date));
     console.log(task);
   };
 
@@ -119,21 +118,3 @@ export const MuiModal = () => {
     </div>
   );
 };
-
-function formatDate(date) {
-  const unixTimeStamp = Date.parse(date);
-  const parsedDate = new Date(unixTimeStamp);
-
-  const formatedDate =
-    parsedDate.getFullYear() +
-    "." +
-    String(parsedDate.getMonth() + 1).padStart(2, "0") +
-    "." +
-    String(parsedDate.getDate()).padStart(2, "0") +
-    " " +
-    String(parsedDate.getHours()).padStart(2, "0") +
-    ":" +
-    String(parsedDate.getMinutes()).padStart(2, "0");
-
-  return formatedDate;
-}

@@ -25,3 +25,20 @@ export const getColCount = (cols) => {
       return "";
   }
 };
+
+export function formatDate(unixTimeStamp) {
+  const parsedDate = new Date(unixTimeStamp);
+
+  const formatedDate =
+    parsedDate.getFullYear() +
+    "." +
+    String(parsedDate.getMonth() + 1).padStart(2, "0") +
+    "." +
+    String(parsedDate.getDate()).padStart(2, "0") +
+    " " +
+    String(parsedDate.getHours()).padStart(2, "0") +
+    ":" +
+    String(parsedDate.getMinutes()).padStart(2, "0");
+
+  return formatedDate;
+}
