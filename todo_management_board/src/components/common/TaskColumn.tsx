@@ -9,12 +9,14 @@ function TaskColumn({
   type = "todo",
   removeTask,
   newColAsssign,
+  setTasks,
 }: {
   color: "error" | "success" | "warning" | "default";
   tasks?: Task[];
   type: "todo" | "in_progress" | "done" | "expired";
   removeTask: (task) => void;
   newColAsssign: (task, type) => void;
+  setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
 }) {
   const getColor = {
     error: "bg-error-300",
@@ -49,6 +51,8 @@ function TaskColumn({
             task={task}
             removeTask={removeTask}
             newColAsssign={newColAsssign}
+            tasks={tasks}
+            setTasks={setTasks}
           />
         ))}
     </div>

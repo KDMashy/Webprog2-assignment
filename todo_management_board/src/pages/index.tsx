@@ -110,6 +110,7 @@ export default function Home() {
             type="todo"
             removeTask={removeTask}
             newColAsssign={assignTaskOtherCol}
+            setTasks={setTasks}
           />
         )}
         {check?.inprog && (
@@ -119,6 +120,7 @@ export default function Home() {
             type="in_progress"
             removeTask={removeTask}
             newColAsssign={assignTaskOtherCol}
+            setTasks={setTasks}
           />
         )}
         {check?.done && (
@@ -128,6 +130,7 @@ export default function Home() {
             type="done"
             removeTask={removeTask}
             newColAsssign={assignTaskOtherCol}
+            setTasks={setTasks}
           />
         )}
         {check?.expired && (
@@ -137,6 +140,7 @@ export default function Home() {
             type="expired"
             removeTask={removeTask}
             newColAsssign={assignTaskOtherCol}
+            setTasks={setTasks}
           />
         )}
       </div>
@@ -150,17 +154,7 @@ export default function Home() {
       </h1>
       {!loading ? GenerateColumns() : <Loading />}
       <NewTaskModal />
-      <EditTaskModal
-        task={{
-          id: 1,
-          title: "Test title",
-          description: "test desc",
-          type: "todo",
-          status: "open",
-          created_at: Date.now().toString(),
-          updated_at: Date.now().toString(),
-        }}
-      />
+      <EditTaskModal task={tasks[0]} tasks={tasks} setTasks={setTasks} />
     </main>
   );
 }

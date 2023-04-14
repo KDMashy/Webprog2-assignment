@@ -1,19 +1,19 @@
 import { useState } from "react";
-import {
-  IconButton,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Stack,
-} from "@mui/material";
+import { IconButton, Dialog, DialogContent, DialogTitle } from "@mui/material";
 import { TaskForm } from "./TaskForm";
 import EditIcon from "@mui/icons-material/Edit";
 
 import { Task } from "@/types/TaskInterface";
 
-export const EditTaskModal = ({ task }: { task: Task }) => {
+export const EditTaskModal = ({
+  task,
+  tasks,
+  setTasks,
+}: {
+  task: Task;
+  tasks: Task[];
+  setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+}) => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -25,16 +25,22 @@ export const EditTaskModal = ({ task }: { task: Task }) => {
   };
 
   const handleSubmit = (formData) => {
-    const result = {
+    const newTask = {
       id: task.id,
       title: formData.title,
       description: formData.description,
-      due_data: Date.parse(formData.due_date),
+      due_date: formData.due_date
+        ? task.due_date
+        : Date.parse(formData.due_date).toString(),
       type: formData.type,
-      updated_at: Date.now(),
+      created_at: task.created_at,
+      updated_at: Date.now().toString(),
     };
 
-    console.log(result);
+    let tmp = tasks?.filter((item) => item?.id !== task.id);
+    tmp.push(newTask);
+
+    setTasks(tmp);
   };
 
   return (

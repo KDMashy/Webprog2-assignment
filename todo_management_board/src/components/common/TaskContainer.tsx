@@ -3,15 +3,20 @@ import React from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "./Button";
 import { checkDate } from "@/helpers/Helpers";
+import { EditTaskModal } from "./muimodal/EditTaskModal";
 
 function TaskContainer({
   task,
   removeTask,
   newColAsssign,
+  tasks,
+  setTasks,
 }: {
   task: Task;
   removeTask: (task) => void;
   newColAsssign: (task, type) => void;
+  tasks: Task[];
+  setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
 }) {
   const returnNormalDate = (date) => {
     if (!date) return "-";
@@ -57,6 +62,7 @@ function TaskContainer({
           circular
           clickHandler={() => removeTask(task)}
         />
+        <EditTaskModal task={task} tasks={tasks} setTasks={setTasks} />
       </div>
       <h3 className="text-lg font-semibold pt-1 pb-3">{task?.title}</h3>
       <p className="text-sm py-2 break-words">{task?.description}</p>
