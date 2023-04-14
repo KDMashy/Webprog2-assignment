@@ -7,42 +7,7 @@ import { Task } from "@/types/TaskInterface";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  // const [tasks, setTasks] = useState<Task[]>([])
-  const [tasks, setTasks] = useState<Task[]>([
-    {
-      id: 1,
-      title: "Test title",
-      description: "test desc",
-      type: "todo",
-      created_at: Date.now().toString(),
-      updated_at: Date.now().toString(),
-    },
-    {
-      id: 2,
-      title: "Test title 2",
-      description: "test desc",
-      type: "in_progress",
-      created_at: Date.now().toString(),
-      updated_at: Date.now().toString(),
-    },
-    {
-      id: 3,
-      title: "Test title 3",
-      description: "test desc",
-      type: "done",
-      created_at: Date.now().toString(),
-      updated_at: Date.now().toString(),
-    },
-    {
-      id: 4,
-      title: "Test title 4",
-      description: "test desc",
-      type: "todo",
-      due_date: (Date.now() - 10000).toString(),
-      created_at: Date.now().toString(),
-      updated_at: Date.now().toString(),
-    },
-  ]);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   const [loading, setLoading] = useState(false);
 
