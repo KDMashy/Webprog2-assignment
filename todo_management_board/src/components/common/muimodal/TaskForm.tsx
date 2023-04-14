@@ -75,11 +75,19 @@ export const TaskForm = ({
           px: 0,
         }}
       >
-        <Button variant="contained" color="error" onClick={handleClose}>
+        <Button
+          variant="contained"
+          className="bg-error-300 hover:bg-error-400"
+          onClick={handleClose}
+        >
           Cancel
         </Button>
 
-        <Button variant="contained" color="success" type="submit">
+        <Button
+          variant="contained"
+          className="bg-success-200 hover:bg-success-300"
+          type="submit"
+        >
           Save
         </Button>
       </DialogActions>

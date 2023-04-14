@@ -25,13 +25,18 @@ export const EditTaskModal = ({
   };
 
   const handleSubmit = (formData) => {
+    let newDueDate;
+    if (formData.due_date) {
+      newDueDate = Date.parse(formData.due_date).toString();
+    } else {
+      newDueDate = task.due_date;
+    }
+
     const newTask = {
       id: task.id,
       title: formData.title,
       description: formData.description,
-      due_date: formData.due_date
-        ? task.due_date
-        : Date.parse(formData.due_date).toString(),
+      due_date: newDueDate,
       type: formData.type,
       created_at: task.created_at,
       updated_at: Date.now().toString(),
