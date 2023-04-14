@@ -1,5 +1,7 @@
 import Loading from "@/components/common/Loading";
 import TaskColumn from "@/components/common/TaskColumn";
+import { NewTaskModal } from "@/components/common/muimodal/NewTaskModal";
+import { EditTaskModal } from "@/components/common/muimodal/EditTaskModal";
 import { checkDate, getColCount } from "@/helpers/Helpers";
 import { Task } from "@/types/TaskInterface";
 import { useEffect, useState } from "react";
@@ -149,6 +151,18 @@ export default function Home() {
         Task Management Board
       </h1>
       {!loading ? GenerateColumns() : <Loading />}
+      <NewTaskModal />
+      <EditTaskModal
+        task={{
+          id: 1,
+          title: "Test title",
+          description: "test desc",
+          type: "todo",
+          status: "open",
+          created_at: Date.now().toString(),
+          updated_at: Date.now().toString(),
+        }}
+      />
     </main>
   );
 }
