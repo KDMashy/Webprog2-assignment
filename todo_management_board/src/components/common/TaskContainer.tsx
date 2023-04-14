@@ -2,6 +2,7 @@ import { Task } from "@/types/TaskInterface";
 import React from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "./Button";
+import { checkDate } from "@/helpers/Helpers";
 
 function TaskContainer({
   task,
@@ -76,18 +77,22 @@ function TaskContainer({
         <></>
       )}
       <div>
-        <select
-          name="task-col-selector"
-          id="task-col-selector-id"
-          className="px-3 py-1 font-medium border-2 border-dark-200 border-opacity-30 rounded-md mt-3"
-          onClick={(e) => handleSelect(e)}
-        >
-          {getOptions()?.map((option, index) => (
-            <option key={`${index}-${option?.label}`} value={option?.type}>
-              {option?.label}
-            </option>
-          ))}
-        </select>
+        {!checkDate(task?.due_date ?? null) ? (
+          <select
+            name="task-col-selector"
+            id="task-col-selector-id"
+            className="px-3 py-1 font-medium border-2 border-dark-200 border-opacity-30 rounded-md mt-3"
+            onClick={(e) => handleSelect(e)}
+          >
+            {getOptions()?.map((option, index) => (
+              <option key={`${index}-${option?.label}`} value={option?.type}>
+                {option?.label}
+              </option>
+            ))}
+          </select>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

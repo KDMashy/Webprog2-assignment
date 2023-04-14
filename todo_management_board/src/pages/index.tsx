@@ -14,7 +14,6 @@ export default function Home() {
       title: "Test title",
       description: "test desc",
       type: "todo",
-      status: "open",
       created_at: Date.now().toString(),
       updated_at: Date.now().toString(),
     },
@@ -23,7 +22,6 @@ export default function Home() {
       title: "Test title 2",
       description: "test desc",
       type: "in_progress",
-      status: "open",
       created_at: Date.now().toString(),
       updated_at: Date.now().toString(),
     },
@@ -32,7 +30,6 @@ export default function Home() {
       title: "Test title 3",
       description: "test desc",
       type: "done",
-      status: "open",
       created_at: Date.now().toString(),
       updated_at: Date.now().toString(),
     },
@@ -41,7 +38,6 @@ export default function Home() {
       title: "Test title 4",
       description: "test desc",
       type: "todo",
-      status: "open",
       due_date: (Date.now() - 10000).toString(),
       created_at: Date.now().toString(),
       updated_at: Date.now().toString(),
@@ -61,7 +57,9 @@ export default function Home() {
     if (type === "expired") {
       tmpList = tasks?.filter((task) => checkDate(task?.due_date ?? null));
     } else {
-      tmpList = tasks?.filter((task) => task?.type === type);
+      tmpList = tasks?.filter(
+        (task) => task?.type === type && !checkDate(task?.due_date ?? null)
+      );
     }
 
     if (tmpList[0]) {
