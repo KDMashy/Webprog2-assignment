@@ -59,7 +59,9 @@ export default function Home() {
     if (type === "expired") {
       tmpList = tasks?.filter((task) => checkDate(task?.due_date ?? null));
     } else {
-      tmpList = tasks?.filter((task) => task?.type === type);
+      tmpList = tasks?.filter(
+        (task) => task?.type === type && !checkDate(task?.due_date ?? null)
+      );
     }
 
     if (tmpList[0]) {
