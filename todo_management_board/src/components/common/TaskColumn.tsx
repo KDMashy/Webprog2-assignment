@@ -34,7 +34,7 @@ function TaskColumn({
 
   return (
     <div
-      className={`${getColor[color]} bg-opacity-40 min-h-[60px] px-4 pt-2 pb-5 max-w-[800px] overflow-y-auto rounded-md transition-all ease-in-out duration-150`}
+      className={`${getColor[color]} bg-opacity-40 min-h-[60px] px-4 pt-2 pb-5 max-h-[800px] overflow-y-auto rounded-md transition-all ease-in-out duration-150`}
     >
       <h2 className="mx-auto w-[70%] border-b-2 border-dark-300 text-xl font-semibold pb-3 mb-8 pt-2 text-center border-opacity-50">
         {getTitle[type]}
