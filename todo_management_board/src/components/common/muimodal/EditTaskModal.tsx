@@ -46,6 +46,8 @@ export const EditTaskModal = ({
     tmp.push(newTask);
 
     setTasks(tmp);
+
+    handleClose();
   };
 
   return (
@@ -54,7 +56,7 @@ export const EditTaskModal = ({
         <EditIcon />
       </IconButton>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>TITLE</DialogTitle>
+        <DialogTitle>Edit Task</DialogTitle>
 
         <DialogContent>
           <TaskForm

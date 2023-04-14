@@ -7,13 +7,20 @@ import {
   DialogTitle,
   Stack,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TaskForm } from "./TaskForm";
 import { Task } from "@/types/TaskInterface";
-import { formatDate } from "@/helpers/Helpers";
 
-export const NewTaskModal = () => {
+export const NewTaskModal = ({
+  tasks,
+  setTasks,
+}: {
+  tasks: Task[];
+  setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+}) => {
   const [open, setOpen] = useState(false);
+
+  const [taskId, setTaskId] = useState(0);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -24,26 +31,51 @@ export const NewTaskModal = () => {
   };
 
   const handleSubmit = (formData) => {
-    const task: Task = {
-      id: 0,
+    let newDueDate;
+    if (formData.due_date) {
+      newDueDate = Date.parse(formData.due_date).toString();
+    } else {
+      newDueDate = null;
+    }
+
+    let id = localStorage.getItem("task_id");
+
+    if (!id) {
+      localStorage.setItem("task_id", JSON.stringify(0));
+    } else {
+      localStorage.setItem("task_id", JSON.stringify(JSON.parse(id) + 1));
+      setTaskId(JSON.parse(id));
+    }
+
+    const newTask: Task = {
+      id: taskId,
       title: formData.title,
       description: formData.description,
-      due_date: formatDate(Date.parse(formData.due_date)),
+      due_date: newDueDate,
       type: formData.type,
-      created_at: formatDate(Date.now()),
-      updated_at: formatDate(Date.now()),
+      created_at: Date.now().toString(),
+      updated_at: Date.now().toString(),
     };
 
-    console.log(formData.due_date);
+    setTasks([...tasks, newTask]);
+
+    handleClose();
   };
 
   return (
     <div>
-      <Button variant="contained" onClick={handleClickOpen}>
-        Open Modal
+      <Button
+        className="bg-light-400 hover:bg-light-400 hover:opacity-50"
+        variant="contained"
+        onClick={handleClickOpen}
+        sx={{
+          my: 2,
+        }}
+      >
+        Add Task
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>TITLE</DialogTitle>
+        <DialogTitle>New Task</DialogTitle>
 
         <DialogContent>
           <TaskForm handleClose={handleClose} handleSubmit={handleSubmit} />

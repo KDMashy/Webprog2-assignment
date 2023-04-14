@@ -61,10 +61,6 @@ export const TaskForm = ({
               id: "done",
               label: "Done",
             },
-            {
-              id: "expired",
-              label: "Expired",
-            },
           ]}
         />
       </Stack>
@@ -77,7 +73,7 @@ export const TaskForm = ({
       >
         <Button
           variant="contained"
-          className="bg-error-300 hover:bg-error-400"
+          className="bg-error-500 opacity-70 hover:bg-error-600 hover:opacity-90"
           onClick={handleClose}
         >
           Cancel
@@ -85,7 +81,7 @@ export const TaskForm = ({
 
         <Button
           variant="contained"
-          className="bg-success-200 hover:bg-success-300"
+          className="bg-success-300 opacity-70 hover:bg-success-300 hover:opacity-80"
           type="submit"
         >
           Save
