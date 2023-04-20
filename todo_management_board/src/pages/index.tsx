@@ -12,7 +12,16 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("tasks")).length > 0) {
+    if (!localStorage.getItem("task_id")) {
+      localStorage.setItem("task_id", "0");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (
+      localStorage.getItem("tasks") &&
+      JSON.parse(localStorage.getItem("tasks")).length > 0
+    ) {
       setTasks(JSON.parse(localStorage.getItem("tasks")));
       return;
     }

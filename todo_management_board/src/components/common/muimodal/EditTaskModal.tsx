@@ -28,8 +28,10 @@ export const EditTaskModal = ({
     let newDueDate;
     if (formData.due_date) {
       newDueDate = Date.parse(formData.due_date).toString();
-    } else {
-      newDueDate = task.due_date;
+    }
+
+    if (isNaN(newDueDate)) {
+      newDueDate = task?.due_date;
     }
 
     const newTask = {
